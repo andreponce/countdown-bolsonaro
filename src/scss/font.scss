@@ -1,0 +1,33 @@
+/**
+O arquivo font.scss é gerado automaticamente, 
+caso queira adicionar algum código extra adicione no font.mustache.scss 
+ou apague o font.mustache para editar ele livremente, porém 
+ao fazer fazê-lo o @fontface não será gerado automaticamente
+*/
+    @mixin ZeitungMicroGC($size,$weight,$style){font-family: 'Zeitung Micro GC',Arial,Verdana,Sans-Serif;font-weight: $weight;font-style: $style;font-size: $size;}
+    
+    @mixin ZeitungMicroGCBold($size){@include ZeitungMicroGC($size,700,normal);}
+    @mixin ZeitungMicroGCSemibold($size){@include ZeitungMicroGC($size,600,normal);}
+
+    @font-face {
+        font-family: 'Zeitung Micro GC';
+        font-display:swap;        
+        
+        src: local('Zeitung Micro GC Bold'), 
+                url('../font/ZeitungMicroGC-Bold.woff2') format('woff2'),
+                url('../font/ZeitungMicroGC-Bold.woff') format('woff'),
+                url('../font/ZeitungMicroGC-Bold.ttf') format('truetype');
+        font-weight: 700;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Zeitung Micro GC';
+        font-display:swap;        
+        
+        src: local('Zeitung Micro GC Semibold'), 
+                url('../font/ZeitungMicroGC-Semibold.woff2') format('woff2'),
+                url('../font/ZeitungMicroGC-Semibold.woff') format('woff'),
+                url('../font/ZeitungMicroGC-Semibold.ttf') format('truetype');
+        font-weight: 600;
+        font-style: normal;
+    }

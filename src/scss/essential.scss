@@ -1,0 +1,189 @@
+@import "reset";
+@import "function";
+@import "variables";
+@import "font";
+
+html {
+    font-size: 16px;
+}
+html,
+body {
+    //overflow: hidden;
+    -webkit-overflow-scrolling: auto;
+}
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.hide {
+    display: none !important;
+}
+
+main {
+    height: 100vh;
+    min-height: 400px;
+    @include flex(center, center, column);
+    user-select: none;
+    .bolsonaro {
+        width: 20rem;
+        height: auto;
+        margin-top: -2rem;
+        img{
+            position: relative;
+            &:nth-child(2){
+                position: absolute;
+                left: 0;
+            }
+        }
+    }
+    .counter {
+        @include flex();
+        margin-top: 3rem;
+        perspective: 1000px;
+        @include x1024{
+            margin-top: 5rem;
+        }
+        *{
+            transform-style: preserve-3d;
+        }
+        .unit {
+            @include flex(flex-start, center, column);
+            margin-left: 1.5rem;
+            &:first-child {
+                margin-left: 0;
+            }
+            > div {
+                @include flex(center, center);
+                transform: scale(.99999);
+                &:after {
+                    @include pseudo();
+                    width: 1px;
+                    height: 1rem;
+                    background: $darkblue;
+                    left: -1px;
+                    transform: scale(0.999);
+                }
+                &:before {
+                    @include pseudo();
+                    width: 1px;
+                    height: 1rem;
+                    background: $darkblue;
+                    right: -1px;
+                    transform: scale(0.999);
+                }
+                span {
+                    @include flex(center, center);
+                    @include transition(.15s,all,$easeInOutQuad);
+                    @include ZeitungMicroGCBold(1.5rem);
+                    border-radius: 0.6rem;
+                    height: 4rem;
+                    color: white;
+                    &:before {
+                        @include pseudo();
+                        width: 100%;
+                        height: 1px;
+                        transform: scale(0.999);
+                    }
+                }
+                .clone {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    //perspective: 1000px;
+                    .half{
+                        position: relative;
+                        width: 100%;
+                        height: 50%;
+                        transform-origin: center bottom;
+                        span {
+                            position: absolute;
+                            width: 100%;
+                        }
+                        &:nth-child(1) {
+                            z-index: 2;
+                        }
+                        &:nth-child(2) {
+                            z-index: 1;
+                            span {
+                                top: -50%;
+                            }
+                        }
+                    }
+                    .crop {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+                        backface-visibility: hidden; 
+                        /*&.front {
+                            span{
+                                background: violet;
+                            }
+                        }*/
+                        &.back {
+                            transform: rotateY(-180deg);
+                            >span{
+                                //background: blue;
+                                transform: scale(-1);
+                            }
+                        }
+                        .shadow{
+                            z-index: -1;
+                            background: black;
+                            opacity: 0;
+                        }                             
+                    }
+                }
+            }
+            p {
+                @include ZeitungMicroGCSemibold(0.65rem);
+                text-transform: uppercase;
+                color: $darkblue;
+                margin-top: 0.75rem;
+                @include x1024{
+                    @include ZeitungMicroGCSemibold(0.75rem);
+                }
+            }
+            &.days {
+                span {
+                    background: $green;
+                    &:before {
+                        background: $darkgreen;
+                    }
+                }
+            }
+            &.hours {
+                span {
+                    background: $yellow;
+                    &:before {
+                        background: $darkyellow;
+                    }
+                }
+            }
+            &.minutes {
+                span {
+                    background: $orange;
+                    &:before {
+                        background: $darkorange;
+                    }
+                }
+            }
+            &.seconds {
+                span {
+                    background: $red;
+                    &:before {
+                        background: $darkred;
+                    }
+                }
+            }
+        }
+    }
+}

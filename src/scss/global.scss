@@ -1,0 +1,15 @@
+.unselectable{
+    user-select: none;
+}
+.hide{
+    display: none!important;
+}
+.only-mobile{display: none;}
+.disable{
+    pointer-events:none!important;
+    cursor:default!important;
+}
+.enable{
+    pointer-events:auto;
+    cursor:auto;
+}
